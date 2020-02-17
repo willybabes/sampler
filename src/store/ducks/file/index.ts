@@ -1,14 +1,34 @@
-import { createAction, createReducer, ActionCreatorWithoutPayload } from '@reduxjs/toolkit'
+import { createAction, createReducer, ActionCreatorWithoutPayload, ActionCreatorWithPayload } from '@reduxjs/toolkit'
 
-export const getFile: ActionCreatorWithoutPayload = createAction('fetchAssets')
+export interface IFile {
+  name: string
+  url: string
+}
 
-const initialState = {
-  file: [] as any
+export interface IFileState {
+  files: Array<IFile>
+}
+
+export interface ISetFile {
+  files: Array<IFile>
+}
+
+export const setFile: ActionCreatorWithPayload<ISetFile> = createAction('setFile')
+export const getFile: ActionCreatorWithoutPayload = createAction('getFile')
+
+const initialState: IFileState = {
+  files: []
 }
 
 const reducer = createReducer(initialState, {
-  [getFile.type]: (state: any) => {
+  [getFile.type]: (state: IFileState) => {
+    console.log('GET FILE')
     console.log(state)
+  },
+  [setFile.type]: (state: IFileState, { payload: { files } }) => {
+    console.log('SET FILE')
+    console.log(state)
+    state.files = files
   }
 })
 
