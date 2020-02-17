@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    // Allow importing
+    "allowSyntheticDefaultImports": true,
+
+    // No module system, concat file
+    "module": "es2015",
+
+    // Set react as the jsx factory
+    "jsx": "react",
+
+    // Target ES6 for modern browsers
+    "target": "es6",
+
+    // Include typings from built-in lib declarations
+    "lib": ["es2015", "dom", "dom.iterable"],
+
+    // Include module source maps for debugging
+    "sourceMap": true,
+  },
+}
